@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="270dp"
+        android:id="@+id/linearLayout">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/Red"
+            android:textSize="30dp"
+            android:layout_weight="1"
+            android:background="@color/Red"
+            android:gravity="center"
+            android:id="@+id/txtRed" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/Orange"
+            android:textSize="30dp"
+            android:layout_weight="1"
+            android:background="@color/Orange"
+            android:gravity="center"
+            android:id="@+id/txtOrange" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/Yellow"
+            android:textSize="30dp"
+            android:layout_weight="1"
+            android:background="@color/Yellow"
+            android:gravity="center"
+            android:id="@+id/txtYellow" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/Green"
+            android:textSize="30dp"
+            android:layout_weight="1"
+            android:background="@color/Green"
+            android:gravity="center"
+            android:id="@+id/txtGreen" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/linearLayout">
+
+
+        </LinearLayout>
+
+
+</RelativeLayout>
