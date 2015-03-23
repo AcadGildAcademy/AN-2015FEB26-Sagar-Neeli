@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!--android:paddingTop="16dp"-->
+    <!--android:paddingBottom="16dp"-->
+    <!--android:paddingLeft="16dp"-->
+    <!--android:paddingRight="16dp">-->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/Red"
+        android:layout_weight="1"
+        android:background="@color/Red"
+        android:gravity="center_horizontal"
+        android:id="@+id/txtRed" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="#0000ff"
+        android:text="@string/Blue"
+        android:gravity="center_horizontal"
+        android:id="@+id/txtBlue" />
+</LinearLayout><!-- From: file:/C:/Users/sneeli/AndroidStudioProjects/Activitylifecycle/app/src/main/res/layout/activity_main2.xml -->

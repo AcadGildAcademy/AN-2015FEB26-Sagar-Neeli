@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="290dp"
+        android:id="@+id/linearLayout">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/Red"
+            android:textColor="@color/White"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:layout_weight="1"
+            android:background="@color/Red"
+            android:gravity="center"
+            android:id="@+id/txtRed" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/Green"
+            android:textColor="@color/White"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:layout_weight="1"
+            android:background="@color/Green"
+            android:gravity="center"
+            android:id="@+id/txtGreen" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/Blue"
+            android:textColor="@color/White"
+            android:layout_weight="1"
+            android:background="@color/Blue"
+            android:gravity="center"
+            android:id="@+id/txtBlue" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/Yellow"
+            android:textColor="@color/White"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:layout_weight="1"
+            android:background="@color/Yellow"
+            android:gravity="center"
+            android:id="@+id/txtYellow" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/linearLayout">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Row One"
+            android:textColor="@color/White"
+            android:textSize="30dp"
+            android:background="@color/Black"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:id="@+id/txtRowOne"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Row Two"
+            android:textSize="30dp"
+            android:textColor="@color/White"
+            android:background="@color/Black"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:id="@+id/txtRowTwo" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Row Three"
+            android:textColor="@color/White"
+            android:textSize="30dp"
+            android:background="@color/Black"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:id="@+id/txtRowThree" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Row Four"
+            android:textSize="30dp"
+            android:textColor="@color/White"
+            android:background="@color/Black"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:id="@+id/txtRowFour" />
+        </LinearLayout>
+
+
+</RelativeLayout><!-- From: file:/C:/Users/sneeli/AndroidStudioProjects/Activitylifecycle/app/src/main/res/layout/nested_layout.xml -->
