@@ -8,7 +8,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:ems="8"
         android:background="@color/White"
         android:id="@+id/editCardBalance"
@@ -19,7 +19,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:ems="8"
         android:id="@+id/editYearlyIntRate"
         android:layout_marginTop="44dp"
@@ -31,7 +31,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:ems="8"
         android:id="@+id/editMinPay"
         android:layout_marginTop="44dp"
@@ -43,38 +43,44 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:ems="8"
         android:id="@+id/editFinalCardBal"
         android:background="@color/White"
         android:layout_marginTop="44dp"
         android:layout_below="@+id/editMinPay"
         android:layout_alignLeft="@+id/editMonRem"
-        android:layout_alignStart="@+id/editMonRem" />
+        android:layout_alignStart="@+id/editMonRem"
+        android:focusable="false"
+        android:cursorVisible="false" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:ems="8"
         android:background="@color/White"
         android:id="@+id/editMonRem"
         android:layout_marginTop="44dp"
         android:layout_below="@+id/editFinalCardBal"
         android:layout_alignLeft="@+id/editIntPaid"
-        android:layout_alignStart="@+id/editIntPaid" />
+        android:layout_alignStart="@+id/editIntPaid"
+        android:focusable="false"
+        android:cursorVisible="false" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:ems="8"
         android:id="@+id/editIntPaid"
         android:layout_marginTop="44dp"
         android:background="@color/White"
         android:layout_below="@+id/editMonRem"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:focusable="false"
+        android:cursorVisible="false"/>
 
     <TextView
         android:layout_width="wrap_content"

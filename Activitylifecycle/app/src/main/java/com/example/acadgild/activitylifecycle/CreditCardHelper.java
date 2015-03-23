@@ -22,6 +22,7 @@ public class CreditCardHelper extends Activity implements View.OnClickListener  
 //        editTxt = findViewById();
         btns = new Button[2];
         int[] buttonIDs = new int[] {R.id.buttonCompute, R.id.buttonClear};
+        editTxt = new EditText[6];
 
         for (int i = 0; i < btns.length; i++) {
             btns[i] = ((Button) findViewById(buttonIDs[i]));
@@ -37,6 +38,9 @@ public class CreditCardHelper extends Activity implements View.OnClickListener  
                 compute();
                 break;
             case R.id.buttonClear:
+                for (int i = 0; i < 6; i++) {
+                    editTxt[i].setText("");
+                }
                 break;
 
         }
@@ -45,52 +49,46 @@ public class CreditCardHelper extends Activity implements View.OnClickListener  
     private void compute() {
 //        int[] editTxtIDs = new int[] {R.id.editCardBalance, R.id.editYearlyIntRate, R.id.editMinPay, R.id.editMinPay, R.id.editFinalCardBal,
 //                R.id.editMonRem, R.id.editIntPaid};
-        editTxt = new EditText[6];
+        float rate = 0;
+        float minimum_payment = 0;
+        float monthlyfloatInterestPaid = 0;
+        float monthlyPrinciple = 0;
+        float principal = 0;
+        float balance = 0;
+        float prevBalance = 0;
+        int count = 0;
         editTxt[0] = (EditText)findViewById(R.id.editCardBalance);
         editTxt[1] = (EditText)findViewById(R.id.editYearlyIntRate);
-        editTxt[2] = (EditText)findViewById(R.id.editIntPaid);
+        editTxt[2] = (EditText)findViewById(R.id.editMinPay);
         editTxt[3] = (EditText)findViewById(R.id.editFinalCardBal);
         editTxt[4] = (EditText)findViewById(R.id.editMonRem);
         editTxt[5] = (EditText)findViewById(R.id.editIntPaid);
-//        float principal = Float.parseFloat(editTxt[0].getText().toString());
-//        float rate = Float.parseFloat(editTxt[1].getText().toString());
-//        float minimum_payment = Float.parseFloat(editTxt[2].getText().toString());
-//        float monthlyfloatInterestPaid = Math.round((principal * (rate / (100 * 12))));
-//        float monthlyPrinciple = minimum_payment - monthlyfloatInterestPaid;
-//        editTxt[3].setText((int)monthlyPrinciple);
-//        editTxt[5].setText((int) monthlyfloatInterestPaid);
-        int principal = 0;
-        int rate = 0;
-        int minimum_payment = 0;
-        int monthlyfloatInterestPaid = 0;
-        int monthlyPrinciple = 0;
         try {
-            principal = Integer.parseInt(editTxt[0].getText().toString());
-            rate = Integer.parseInt(editTxt[1].getText().toString());
-            minimum_payment = Integer.parseInt(editTxt[2].getText().toString());
-            monthlyfloatInterestPaid = Math.round((principal * (rate / (100 * 12))));
-            monthlyPrinciple = minimum_payment - monthlyfloatInterestPaid;
-//            principal = Integer.valueOf(editTxt[0].getText().toString()).intValue();
-//            rate = Integer.valueOf(editTxt[1].getText().toString()).intValue();
-//            minimum_payment = Integer.valueOf(editTxt[2].getText().toString()).intValue();
-//            monthlyfloatInterestPaid = Math.round((principal * (rate / (100 * 12))));
-//            monthlyPrinciple = minimum_payment - monthlyfloatInterestPaid;
-//            editTxt[3].setText(String.valueOf(monthlyPrinciple));
-//            editTxt[5].setText(String.valueOf(monthlyfloatInterestPaid));
-            editTxt[3].setText(monthlyPrinciple + "");
-            editTxt[5].setText(monthlyfloatInterestPaid + "");
+            principal = Float.parseFloat(editTxt[0].getText().toString());
+            rate = Float.parseFloat(editTxt[1].getText().toString());
+            minimum_payment = Float.parseFloat(editTxt[2].getText().toString());
+            while(monthlyfloatInterestPaid != 0) {
+                monthlyfloatInterestPaid = Math.round((principal * (rate / (100 * 12))));
+                monthlyPrinciple = minimum_payment - monthlyfloatInterestPaid;
+                if (monthlyPrinciple == minimum_payment)
+                    break;
+                balance = principal - monthlyPrinciple;
+                principal = balance;
+//                if (balance > 0)
+//                    principal = balance;
+//                else
+//                    prevBalance = principal;
+                count++;
+            }
 
-        } catch(NumberFormatException ex){
+            editTxt[3].setText(String.valueOf(monthlyfloatInterestPaid));
+            editTxt[4].setText(String.valueOf(count));
+            editTxt[5].setText(String.valueOf(balance));
 
-//            System.out.println("Value at TextView is not a valid integer");
+        } catch (NumberFormatException ex) {
             editTxt[3].setText("Value at TextView is not a valid integer");
             editTxt[5].setText("Value at TextView is not a valid integer");
-
         }
-//        editTxt[3].setText(String.valueOf(monthlyPrinciple));
-//        editTxt[5].setText(String.valueOf(monthlyfloatInterestPaid));
-//        editTxt[3].setText(Integer.toString(monthlyPrinciple));
-//        editTxt[5].setText(Integer.toString(monthlyfloatInterestPaid));
 
     }
 

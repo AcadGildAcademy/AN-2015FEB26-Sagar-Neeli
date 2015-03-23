@@ -29,7 +29,6 @@ public class HomeActivity extends Activity implements View.OnClickListener{
         settings = (Button) findViewById(R.id.buttonSettings);
         vibrate = (Button) findViewById(R.id.buttonVibrate);
 
-//        vibrateButton = (Vibrator) this.getSystemService(VIBRATOR_SERVICE);
         vibrateButton = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
         apps.setOnClickListener(this);
