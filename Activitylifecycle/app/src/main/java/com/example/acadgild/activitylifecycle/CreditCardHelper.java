@@ -19,7 +19,6 @@ public class CreditCardHelper extends Activity implements View.OnClickListener  
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.credit_card);
-//        editTxt = findViewById();
         btns = new Button[2];
         int[] buttonIDs = new int[] {R.id.buttonCompute, R.id.buttonClear};
         editTxt = new EditText[6];

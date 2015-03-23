@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="2dp"
+    android:padding="2dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="ENTER DETAILS HERE"
+            android:textStyle="bold"
+            android:textSize="22dp"
+            android:textColor="@color/White"
+            android:background="@color/Violet"
+            android:id="@+id/label_enter_details"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Credit \n Card"
+        android:id="@+id/textCreditCardNum"
+        android:layout_below="@+id/scrollView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="28dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Current Bal. ($)"
+        android:id="@+id/textCurBal"
+        android:layout_alignTop="@+id/textCreditCardNum"
+        android:layout_toRightOf="@+id/textCreditCardNum"
+        android:layout_toEndOf="@+id/textCreditCardNum"
+        android:layout_marginLeft="27dp"
+        android:layout_marginStart="27dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Interest (% p.a)"
+        android:id="@+id/textInterest"
+        android:layout_alignTop="@+id/textCurBal"
+        android:layout_toRightOf="@+id/textCurBal"
+        android:layout_toEndOf="@+id/textCurBal"
+        android:layout_marginLeft="30dp"
+        android:layout_marginStart="30dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Monthly Payment ($)"
+        android:id="@+id/textMonPay"
+        android:layout_alignTop="@+id/textInterest"
+        android:layout_alignRight="@+id/scrollView"
+        android:layout_alignEnd="@+id/scrollView" />
+</RelativeLayout>
