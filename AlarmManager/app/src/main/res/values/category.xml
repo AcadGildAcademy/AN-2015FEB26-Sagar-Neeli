@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="main_category_img">
+        <item>@drawable/ic_beaches</item>
+        <item>@drawable/ic_sports</item>
+        <item>@drawable/ic_camp</item>
+        <item>@drawable/ic_cars</item>
+        <item>@drawable/ic_casinos</item>
+        <item>@drawable/ic_adventures</item>
+        <item>@drawable/ic_continents</item>
+        <item>@drawable/ic_holy</item>
+        <item>@drawable/ic_transports</item>
+    </string-array>
+</resources>
