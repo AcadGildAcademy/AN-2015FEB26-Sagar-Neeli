@@ -1,0 +1,30 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="AppTheme.Base">
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/accent</item>
+        <item name="android:windowBackground">@android:color/white</item>
+    </style>
+
+    <style name="MyCustomTheme" parent="ThemeOverlay.AppCompat.Dark">
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+    </style>
+
+    <!--<style name="CustomTheme" parent="@android:style/Theme.Holo.Light">-->
+        <!--<item name="android:actionBarStyle">@style/MyActionBar</item>-->
+        <!--<item name="android:actionBarTabStyle">@style/MyActionBarTabStyle</item>-->
+        <!--<item name="android:actionBarTabTextStyle">@style/MyActionBarTabText</item>-->
+        <!--<item name="android:actionButtonStyle">@style/MyActionBarButtonStyle</item>-->
+        <!--<item name="android:actionMenuTextColor">#ffffff</item>-->
+        <!--<item name="android:windowBackground">@drawable/bg</item>-->
+        <!--<item name="android:datePickerStyle">@android:style/Widget.DatePicker</item>-->
+    <!--</style>-->
+
+</resources>
