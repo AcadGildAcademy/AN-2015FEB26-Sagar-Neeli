@@ -1,5 +1,6 @@
 package com.example.acadgild.sagar.todoproject;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -137,8 +139,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                 .build();
 
 
-//        customBtn = (Button) findViewById(R.id.button);
-//        customBtn.setOnClickListener(this);
+        customBtn = (Button) findViewById(R.id.button);
+        customBtn.setOnClickListener(this);
 
     }
 
@@ -173,14 +175,24 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-//        showDialog(DATE_DIALOG_ID);
-//        final Dialog dialog = new Dialog(context);
-//        dialog.setContentView(R.layout.custom_dialog);
-//        dialog.setTitle("Title...");
-//        if (view.getId() == R.id.button) {
-//            Intent i = new Intent(this, CutomDialog.class);
-//            startActivity(i);
-//        }
+
+//        final Dialog dialog = new Dialog(context, R.style.myBackgroundStyle);
+        final Dialog dialog = new Dialog(context);
+//        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AppTheme_Base));
+        dialog.setContentView(R.layout.custom_dialog);
+        dialog.setTitle("Enter an activity");
+
+        Button dialogButton = (Button) dialog.findViewById(R.id.buttonSave);
+        // if button is clicked, close the custom dialog
+        dialogButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
     }
+
 
 }
