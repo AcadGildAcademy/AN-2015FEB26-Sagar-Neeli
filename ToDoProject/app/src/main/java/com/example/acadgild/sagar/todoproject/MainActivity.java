@@ -60,6 +60,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     final Context context = this;
     Button customBtn;
 
+//    private ToDoDataSource datasource;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -142,6 +144,17 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         customBtn = (Button) findViewById(R.id.button);
         customBtn.setOnClickListener(this);
 
+//        datasource = new ToDoDataSource(this);
+//        List<ToDoItem> notes = datasource.findAll();
+//        ToDoItem note = notes.get(0);
+//        note.setTitle("Updated!");
+//        datasource.update(note);
+//
+//        notes = datasource.findAll();
+//        note = notes.get(0);
+
+//        Log.i("NOTES", note.getKey() + ": " + note.getTitle());
+
     }
 
 
@@ -178,9 +191,13 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
 //        final Dialog dialog = new Dialog(context, R.style.myBackgroundStyle);
         final Dialog dialog = new Dialog(context);
+//        final Dialog dialog = new Dialog(this, R.style.NewDialog);
+//        MaterialDialog dialog1 = new MaterialDialog(context).setView(R.layout.custom_dialog).setTitle("Enter an Activity");
 //        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AppTheme_Base));
         dialog.setContentView(R.layout.custom_dialog);
         dialog.setTitle("Enter an activity");
+
+//        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
 
         Button dialogButton = (Button) dialog.findViewById(R.id.buttonSave);
         // if button is clicked, close the custom dialog

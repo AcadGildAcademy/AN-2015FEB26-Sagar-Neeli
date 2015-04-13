@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="android" name="Android">
+      <configuration />
+    </facet>
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/java" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="android-support-v410" level="project" />
+    <orderEntry type="library" name="internal_impl-21.0.39" level="project" />
+    <orderEntry type="library" name="internal_impl-21.0.21" level="project" />
+    <orderEntry type="library" name="android-19" level="project" />
+    <orderEntry type="library" name="classes42" level="project" />
+    <orderEntry type="library" name="internal_impl-22.0.02" level="project" />
+    <orderEntry type="library" name="internal_impl-21.0.37" level="project" />
+    <orderEntry type="library" name="android-support-v416" level="project" />
+    <orderEntry type="library" name="classes15" level="project" />
+    <orderEntry type="library" name="classes20" level="project" />
+    <orderEntry type="library" name="classes3" level="project" />
+    <orderEntry type="library" name="libs4" level="project" />
+    <orderEntry type="library" name="classes9" level="project" />
+    <orderEntry type="library" name="android-support-v42" level="project" />
+    <orderEntry type="library" name="android-21" level="project" />
+    <orderEntry type="library" name="android" level="project" />
+    <orderEntry type="library" name="android-support-v7-mediarouter" level="project" />
+    <orderEntry type="library" name="classes11" level="project" />
+    <orderEntry type="library" name="android-support-v413" level="project" />
+    <orderEntry type="library" name="android-support-v411" level="project" />
+    <orderEntry type="library" name="android-support-v412" level="project" />
+    <orderEntry type="library" name="classes4" level="project" />
+    <orderEntry type="library" name="data4" level="project" />
+    <orderEntry type="library" name="android-support-v44" level="project" />
+    <orderEntry type="library" name="19.1.02" level="project" />
+    <orderEntry type="library" name="android-support-v41" level="project" />
+    <orderEntry type="library" name="android-support-v415" level="project" />
+    <orderEntry type="library" name="18.0.01" level="project" />
+    <orderEntry type="library" name="android-support-v417" level="project" />
+    <orderEntry type="library" name="classes5" level="project" />
+    <orderEntry type="library" name="classes24" level="project" />
+    <orderEntry type="library" name="android-support-v47" level="project" />
+    <orderEntry type="library" name="classes36" level="project" />
+    <orderEntry type="library" name="android-support-v7-cardview" level="project" />
+    <orderEntry type="library" name="classes52" level="project" />
+    <orderEntry type="library" name="classes30" level="project" />
+    <orderEntry type="library" name="classes35" level="project" />
+    <orderEntry type="library" name="internal_impl-21.0.31" level="project" />
+    <orderEntry type="library" name="android-support-v418" level="project" />
+    <orderEntry type="library" name="classes10" level="project" />
+    <orderEntry type="library" name="internal_impl-21.0.2" level="project" />
+    <orderEntry type="library" name="android-support-v4-r13" level="project" />
+    <orderEntry type="library" name="13.0.01" level="project" />
+    <orderEntry type="library" name="classes" level="project" />
+    <orderEntry type="library" name="22.0.08" level="project" />
+    <orderEntry type="library" name="classes21" level="project" />
+    <orderEntry type="library" name="internal_impl-22.0.01" level="project" />
+    <orderEntry type="library" name="classes8" level="project" />
+    <orderEntry type="library" name="classes26" level="project" />
+    <orderEntry type="library" name="internal_impl-22.0.03" level="project" />
+    <orderEntry type="library" name="classes43" level="project" />
+    <orderEntry type="library" name="android-support-v414" level="project" />
+    <orderEntry type="library" name="classes1" level="project" />
+    <orderEntry type="library" name="internal_impl-21.0.3" level="project" />
+    <orderEntry type="library" name="android-support-v43" level="project" />
+    <orderEntry type="library" name="layoutlib1" level="project" />
+    <orderEntry type="library" name="internal_impl-21.0.32" level="project" />
+    <orderEntry type="library" name="internal_impl-20.0.0" level="project" />
+    <orderEntry type="library" name="classes12" level="project" />
+    <orderEntry type="library" name="android-17" level="project" />
+    <orderEntry type="library" name="classes46" level="project" />
+    <orderEntry type="library" name="internal_impl-21.0.311" level="project" />
+    <orderEntry type="library" name="19.0.11" level="project" />
+    <orderEntry type="library" name="android-support-v48" level="project" />
+    <orderEntry type="library" name="lib9" level="project" />
+    <orderEntry type="library" name="libs8" level="project" />
+    <orderEntry type="library" name="classes48" level="project" />
+    <orderEntry type="library" name="classes37" level="project" />
+    <orderEntry type="library" name="layoutlib" level="project" />
+    <orderEntry type="library" name="20.0.02" level="project" />
+    <orderEntry type="library" name="classes41" level="project" />
+    <orderEntry type="library" name="classes49" level="project" />
+    <orderEntry type="library" name="classes40" level="project" />
+    <orderEntry type="library" name="android-support-v7-recyclerview" level="project" />
+    <orderEntry type="library" name="19.0.01" level="project" />
+    <orderEntry type="library" name="lib1" level="project" />
+    <orderEntry type="library" name="android2" level="project" />
+    <orderEntry type="library" name="classes44" level="project" />
+    <orderEntry type="library" name="data2" level="project" />
+    <orderEntry type="library" name="classes34" level="project" />
+    <orderEntry type="library" name="internal_impl-21.0.310" level="project" />
+    <orderEntry type="library" name="android-20" level="project" />
+    <orderEntry type="library" name="android-support-v46" level="project" />
+    <orderEntry type="library" name="android-support-v7-gridlayout" level="project" />
+    <orderEntry type="library" name="classes25" level="project" />
+    <orderEntry type="library" name="classes22" level="project" />
+    <orderEntry type="library" name="internal_impl-21.0.33" level="project" />
+    <orderEntry type="library" name="android-support-v45" level="project" />
+    <orderEntry type="library" name="classes51" level="project" />
+    <orderEntry type="library" name="android1" level="project" />
+    <orderEntry type="library" name="classes53" level="project" />
+    <orderEntry type="library" name="libs3" level="project" />
+    <orderEntry type="library" name="classes50" level="project" />
+    <orderEntry type="library" name="internal_impl-21.0.38" level="project" />
+    <orderEntry type="library" name="data1" level="project" />
+    <orderEntry type="library" name="android-support-v49" level="project" />
+    <orderEntry type="library" name="layoutlib2" level="project" />
+    <orderEntry type="library" name="libs6" level="project" />
+    <orderEntry type="library" name="classes54" level="project" />
+    <orderEntry type="library" name="android-22" level="project" />
+    <orderEntry type="library" name="22.0.010" level="project" />
+    <orderEntry type="library" name="internal_impl-21.0.35" level="project" />
+    <orderEntry type="library" name="22.0.06" level="project" />
+    <orderEntry type="library" name="data" level="project" />
+    <orderEntry type="library" name="internal_impl-21.0.34" level="project" />
+    <orderEntry type="library" name="android-support-v4" level="project" />
+    <orderEntry type="library" name="classes19" level="project" />
+    <orderEntry type="library" name="android-support-v13" level="project" />
+    <orderEntry type="library" name="classes7" level="project" />
+    <orderEntry type="library" name="22.0.07" level="project" />
+    <orderEntry type="library" name="data3" level="project" />
+    <orderEntry type="library" name="internal_impl-21.0.36" level="project" />
+    <orderEntry type="library" name="internal_impl-22.0.0" level="project" />
+    <orderEntry type="library" name="classes29" level="project" />
+    <orderEntry type="module" module-name="v4" />
+    <orderEntry type="module" module-name="actionbarsherlock" />
+    <orderEntry type="module" module-name="tests66" />
+    <orderEntry type="module" module-name="r6" />
+    <orderEntry type="module" module-name="sdk" />
+  </component>
+</module>
+
