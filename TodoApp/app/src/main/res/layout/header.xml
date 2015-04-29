@@ -24,9 +24,7 @@
             android:textColor="#ffffff"
             android:text="Sagar Neeli"
             android:textSize="14sp"
-            android:textStyle="bold"
-
-            />
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/email"

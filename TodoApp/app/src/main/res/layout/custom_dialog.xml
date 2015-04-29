@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingLeft="30dp"
+    android:paddingRight="30dp"
+    android:paddingTop="30dp"
+    android:paddingBottom="30dp"
+    android:scrollbars="vertical"
+    android:scrollbarAlwaysDrawVerticalTrack="true">
+    <!--android:fitsSystemWindows="true">-->
     <!--android:theme="@style/Base.V21.Theme.AppCompat.Light.Dialog">-->
 
     <EditText
@@ -10,7 +20,11 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/title"
-        android:inputType="text|textCapWords|textNoSuggestions"
+        android:background="@null"
+        android:inputType="text|textCapWords"
+        android:textStyle="bold"
+        android:textColor="@color/Black"
+        android:textColorHint="@color/material_blue_grey_800"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"/>
@@ -19,48 +33,58 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="text"
+        android:inputType="text|textMultiLine"
+        android:lines="20"
+        android:minLines="3"
+        android:textColor="@color/Black"
         android:id="@+id/editTextDescription"
-        android:hint="@string/description"
+        android:hint="Note"
+        android:textColorHint="@color/material_blue_grey_800"
+        android:background="@null"
         android:layout_below="@+id/editTextTitle"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="34dp" />
+        android:layout_centerHorizontal="true" />
 
     <DatePicker
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/datePicker"
         android:calendarViewShown="false"
+        android:datePickerMode="spinner"
+        android:yearListSelectorColor="@color/material_blue_grey_800"
+        android:dayOfWeekTextAppearance="@color/Black"
+        android:headerMonthTextAppearance="@color/material_blue_grey_800"
         android:layout_below="@+id/editTextDescription"
         android:layout_centerHorizontal="true"
-        android:orientation="vertical"
-        android:layout_marginTop="45dp" />
+        android:orientation="vertical" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <RelativeLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/datePicker">
+        android:layout_below="@+id/datePicker"
+        android:orientation="horizontal">
     <Button
-        style="?android:attr/buttonBarButtonStyle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/save"
-        android:id="@+id/buttonSave"
-        android:layout_weight="1"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        style="?android:attr/buttonBarButtonStyle"
-        android:layout_width="0dp"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:textColor="@color/Pink"
         android:layout_height="wrap_content"
         android:text="@string/cancel"
         android:id="@+id/buttonCancel"
-        android:layout_weight="1"
-        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/buttonSave"
+        android:gravity="bottom|right"/>
+
+    <Button
+        style="?android:attr/borderlessButtonStyle"
+        android:textColor="@color/Pink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/save"
+        android:id="@+id/buttonSave"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-    </LinearLayout>
+        android:layout_alignParentTop="true"
+        android:gravity="bottom|right"/>
+
+
+    </RelativeLayout>
 
 </RelativeLayout>
+ </ScrollView>

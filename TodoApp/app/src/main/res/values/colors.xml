@@ -20,6 +20,7 @@
     <color name="fab_color_1_muted">#ff8080</color>
     <color name="fab_color_2">#9c27b0</color>
     <color name="fab_color_2_muted">#a56ab0</color>
+    <color name="Pink">#F50057</color>
 
     <item name="blue" type="color">#FF33B5E5</item>
     <item name="purple" type="color">#FFAA66CC</item>

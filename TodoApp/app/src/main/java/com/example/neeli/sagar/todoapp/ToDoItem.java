@@ -1,9 +1,12 @@
 package com.example.neeli.sagar.todoapp;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by sneeli on 4/11/2015.
  */
-public class ToDoItem {
+public class ToDoItem implements Parcelable {
 
     private int id;
     private String title;
@@ -11,6 +14,7 @@ public class ToDoItem {
     private String date;
 
     public ToDoItem(int id, String title, String description, String date) {
+        super();
         this.id = id;
         this.title = title;
         this.description = description;
@@ -53,21 +57,16 @@ public class ToDoItem {
         this.date = date;
     }
 
-//    public static ToDoItem getNew() {
-//
-//        Locale locale = new Locale("en-US");
-//        Locale.setDefault(locale);
-//
-//        String pattern = "MM/dd/yyyy";
-//        SimpleDateFormat formatter = new SimpleDateFormat(pattern);
-//        String key = formatter.format(new Date());
-//
-//        ToDoItem note = new ToDoItem();
-//        note.setKey(key);
-////        note.setDescription();
-//        note.setTitle("");
-//        return note;
-//    }
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
-
+    @Override
+    public void writeToParcel(Parcel dest, int i) {
+        dest.writeString(this.title);
+        dest.writeString(this.description);
+        dest.writeString(this.date);
+        dest.writeInt(this.id);
+    }
 }

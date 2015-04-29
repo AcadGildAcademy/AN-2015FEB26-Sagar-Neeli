@@ -1,8 +1,7 @@
 package com.example.neeli.sagar.todoapp;
 
-import android.app.Dialog;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
+import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -11,29 +10,30 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.HeaderViewListAdapter;
 import android.widget.ImageButton;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.melnykov.fab.FloatingActionButton;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 
-public class MainActivity extends ActionBarActivity implements View.OnClickListener {
+public class MainActivity extends ActionBarActivity implements View.OnClickListener, OnItemClickListener {
 
-    String TITLES[] = {"Home","Events","Mail","Shop","Travel"};
-    int ICONS[] = {R.drawable.ic_home,R.drawable.ic_events,R.drawable.ic_mail,R.drawable.ic_shop,R.drawable.ic_travel};
+    String TITLES[] = {"Home", "Events", "Mail", "Shop", "Travel"};
+    int ICONS[] = {R.drawable.ic_home, R.drawable.ic_events, R.drawable.ic_mail, R.drawable.ic_shop, R.drawable.ic_travel};
     ImageButton FAB;
     //Similarly we Create a String Resource for the name and email in the header view
     //And we also create a int resource for profile picture in the header view
@@ -56,34 +56,38 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     int month;
     int year;
 
-    private ListAdapter todoListAdapter;
-    private TaskDBHelper todoListSQLHelper;
 
     ListView listView;
+    List<ToDoItem> items;
+    CustomListAdapter adapter;
+    ToDoItemDatabase db;
+    ToDoItemDatabase completedDb;
+    DoneActivity done;
+//    Intent intent;
+    private static List<ToDoItem> results;
+    private static String TODO = "TODO";
+    private static String COMPLETED_TODO = "COMPLETED_TODO";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // set the toolbar
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+//        toolbar.hide();
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.NavigationRecyclerView); // Assigning the RecyclerView Object to the xml View
-        mRecyclerView.setHasFixedSize(true);                            // Letting the system know that the list objects are of fixed size
-        mAdapter = new MyAdapter(TITLES,ICONS,NAME,EMAIL,PROFILE);       // Creating the Adapter of MyAdapter class(which we are going to see in a bit)
-        // And passing the titles,icons,header view name, header view email,
-        // and header view profile picture
+        // set the Navigation app drawer
+        mRecyclerView = (RecyclerView) findViewById(R.id.NavigationRecyclerView);
+        mRecyclerView.setHasFixedSize(true);
+        mAdapter = new MyAdapter(TITLES, ICONS, NAME, EMAIL, PROFILE);
+        mRecyclerView.setAdapter(mAdapter);
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
 
-        mRecyclerView.setAdapter(mAdapter);                              // Setting the adapter to RecyclerView
-
-        mLayoutManager = new LinearLayoutManager(this);                 // Creating a layout Manager
-
-        mRecyclerView.setLayoutManager(mLayoutManager);                 // Setting the layout Manager
-
-
-        Drawer = (DrawerLayout) findViewById(R.id.drawer);        // Drawer object Assigned to the view
-        mDrawerToggle = new ActionBarDrawerToggle(this,Drawer,toolbar,R.string.drawer_open,R.string.drawer_close){
+        Drawer = (DrawerLayout) findViewById(R.id.drawer);
+        mDrawerToggle = new ActionBarDrawerToggle(this, Drawer, toolbar, R.string.drawer_open, R.string.drawer_close) {
 
             @Override
             public void onDrawerOpened(View drawerView) {
@@ -97,19 +101,36 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                 super.onDrawerClosed(drawerView);
                 // Code here will execute once drawer is closed
             }
-
-
-
         }; // Drawer Toggle Object Made
         Drawer.setDrawerListener(mDrawerToggle); // Drawer Listener set to the Drawer toggle
         mDrawerToggle.syncState();               // Finally we set the drawer toggle sync State
 
-
-        listView = (ListView) findViewById(android.R.id.list);
+        results = new ArrayList<ToDoItem>();
+        // List view on the main app activity
+//        listView = (ListView) findViewById(android.R.id.list);
+        listView = (ListView) findViewById(R.id.list);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.attachToListView(listView);
         fab.setOnClickListener(this);
-        updateToDoList();
+        Set_Referash_Data();
+
+    }
+
+    public void Set_Referash_Data() {
+//        db = new TaskDBHelper(MainActivity.this);
+        db = new ToDoItemDatabase(getApplicationContext(), TODO);
+//        db = new ToDoItemDatabase(MainActivity.this, TODO);
+        items = db.getAllTasks();
+        adapter = new CustomListAdapter(this, items);
+        listView.setOnItemClickListener(this);
+        listView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onResume() {
+        // TODO Auto-generated method stub
+        super.onResume();
+        Set_Referash_Data();
 
     }
 
@@ -127,12 +148,15 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
+        else if (id == R.id.action_next) {
+            Intent intent = new Intent(this, DoneActivity.class);
+            startActivity(intent);
 
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -140,19 +164,20 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.fab:
-                final Dialog dialog = new Dialog(MainActivity.this);
-                dialog.setContentView(R.layout.custom_dialog);
-                dialog.setTitle("Enter an activity");
-                final EditText title = (EditText) dialog.findViewById(R.id.editTextTitle);
-                final EditText description = (EditText) dialog.findViewById(R.id.editTextDescription);
-                final DatePicker datePicker = (DatePicker) dialog.findViewById(R.id.datePicker);
-                Button dialogButtonSave = (Button) dialog.findViewById(R.id.buttonSave);
+                LayoutInflater inflater = LayoutInflater.from(this);
+                View promtView = inflater.inflate(R.layout.custom_dialog, null);
+                final AlertDialog dialog = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_LIGHT).create();
+
+                final EditText title = (EditText) promtView.findViewById(R.id.editTextTitle);
+                final EditText description = (EditText) promtView.findViewById(R.id.editTextDescription);
+                final DatePicker datePicker = (DatePicker) promtView.findViewById(R.id.datePicker);
+
+                Button dialogButtonSave = (Button) promtView.findViewById(R.id.buttonSave);
                 dialogButtonSave.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        try{
-                            if(title.getText().toString().equals("") || description.getText().toString().equals("")){
-                                Toast.makeText(MainActivity.this, "Activity Saved", Toast.LENGTH_SHORT).show();
+                        try {
+                            if (title.getText().toString().equals("") || description.getText().toString().equals("")) {
                                 String str = "Don't Leave any field blank !";
                                 Toast toast = Toast.makeText(MainActivity.this, str, Toast.LENGTH_SHORT);
                                 toast.setGravity(Gravity.CENTER, 0, 0);
@@ -164,10 +189,15 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                                 day = datePicker.getDayOfMonth();
                                 month = datePicker.getMonth() + 1;
                                 year = datePicker.getYear();
-                                String date = day + "/" + month + "/" + year;
-                                todoListSQLHelper.insertIntoTable(titleInput, descriptionInput, date);
-                                todoListSQLHelper = new TaskDBHelper(MainActivity.this);
-                                updateToDoList();
+                                String date = year + "/" + month + "/" + day;
+                                ToDoItem r = new ToDoItem();
+                                r.setDate(date);
+                                r.setTitle(titleInput);
+                                r.setDescription(descriptionInput);
+                                db.insertIntoTable(r);
+                                db = new ToDoItemDatabase(getApplicationContext(), TODO);
+//                                db = new ToDoItemDatabase(MainActivity.this, TODO);
+                                Set_Referash_Data();
                                 dialog.dismiss();
                             }
                         } catch (Exception ex) {
@@ -175,8 +205,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                         }
                     }
                 });
-
-                Button dialogButtonCancel = (Button) dialog.findViewById(R.id.buttonCancel);
+                Button dialogButtonCancel = (Button) promtView.findViewById(R.id.buttonCancel);
                 // if button is clicked, close the custom dialog
                 dialogButtonCancel.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -186,6 +215,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                     }
                 });
 
+                dialog.setView(promtView);
                 dialog.show();
                 return;
 
@@ -195,61 +225,84 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     }
 
 
-    private void updateToDoList() {
-        todoListSQLHelper = new TaskDBHelper(MainActivity.this);
-        SQLiteDatabase sqLiteDatabase = todoListSQLHelper.getReadableDatabase();
-
-        //cursor to read todo task list from database
-        Cursor cursor = sqLiteDatabase.query(TaskDBHelper.TABLE_NAME,
-                new String[]{TaskDBHelper._ID, TaskDBHelper.TASK_TITLE, TaskDBHelper.TASK_DESCRIPTION, TaskDBHelper.TASK_DATE},
-                null, null, null, null, TaskDBHelper.TASK_DATE + " ASC");
-
-        //binds the todo task list with the UI
-        todoListAdapter = new SimpleCursorAdapter(
-                this,
-                R.layout.custom_list,
-                cursor,
-                new String[]{TaskDBHelper.TASK_TITLE, TaskDBHelper.TASK_DESCRIPTION, TaskDBHelper.TASK_DATE},
-                new int[]{R.id.textViewTitle, R.id.textViewDescription, R.id.textViewDate},
-                0
-        );
-
-        setListAdapter(todoListAdapter);
-    }
 
     public void onDoneButtonClick(View view) {
-        View v = (View) view.getParent();
-        TextView todoTV = (TextView) v.findViewById(R.id.todoTaskTV);
-        String todoTaskItem = todoTV.getText().toString();
+        ToDoItem m = (ToDoItem) view.getTag();
+        db.deleteItem(m.getId());
+        Set_Referash_Data();
+        results.add(m);
+        completedDb = new ToDoItemDatabase(getApplicationContext(), COMPLETED_TODO);
+        completedDb.insertIntoTable(m);
+//        completedDb.close();
 
-        String deleteTodoItemSql = "DELETE FROM " + TaskDBHelper.TABLE_NAME +
-                " WHERE " + TaskDBHelper.TASK_TITLE + " = '" + todoTaskItem + "'";
-
-        todoListSQLHelper = new TaskDBHelper(MainActivity.this);
-        SQLiteDatabase sqlDB = todoListSQLHelper.getWritableDatabase();
-        sqlDB.execSQL(deleteTodoItemSql);
-        updateToDoList();
     }
 
-
-    protected ListView getListView() {
-        if (listView == null) {
-            listView = (ListView) findViewById(android.R.id.list);
-        }
-        return listView;
+    public static List<ToDoItem> getTodoItemsList() {
+        return results;
     }
 
-    protected void setListAdapter(ListAdapter adapter) {
-        getListView().setAdapter(adapter);
-    }
+    @Override
+    public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+        // TODO Auto-generated method stub
+        final ToDoItem r = (ToDoItem) listView.getItemAtPosition(arg2);
 
-    protected ListAdapter getListAdapter() {
-        ListAdapter adapter = getListView().getAdapter();
-        if (adapter instanceof HeaderViewListAdapter) {
-            return ((HeaderViewListAdapter)adapter).getWrappedAdapter();
-        } else {
-            return adapter;
-        }
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View promtView = inflater.inflate(R.layout.custom_dialog, null);
+        final AlertDialog dialog = new AlertDialog.Builder(this, AlertDialog.THEME_DEVICE_DEFAULT_LIGHT).create();
+
+        final EditText title = (EditText) promtView.findViewById(R.id.editTextTitle);
+        final EditText description = (EditText) promtView.findViewById(R.id.editTextDescription);
+        final DatePicker datePicker = (DatePicker) promtView.findViewById(R.id.datePicker);
+        title.setText(r.getTitle());
+        description.setText(r.getDescription());
+        String updateDate[] = r.getDate().split("/");
+        Toast.makeText(MainActivity.this, r.getDate(), Toast.LENGTH_SHORT).show();
+        datePicker.updateDate(Integer.parseInt(updateDate[0]), Integer.parseInt(updateDate[1]) - 1, Integer.parseInt(updateDate[2]));
+        Button dialogButtonSave = (Button) promtView.findViewById(R.id.buttonSave);
+        dialogButtonSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    if (title.getText().toString().equals("") || description.getText().toString().equals("")) {
+                        String str = "Don't Leave any field blank !";
+                        Toast toast = Toast.makeText(MainActivity.this, str, Toast.LENGTH_SHORT);
+                        toast.setGravity(Gravity.CENTER, 0, 0);
+                        toast.show();
+                    } else {
+                        String titleInput = title.getText().toString();
+                        String descriptionInput = description.getText().toString();
+                        Toast toast = Toast.makeText(MainActivity.this, titleInput, Toast.LENGTH_SHORT);
+                        day = datePicker.getDayOfMonth();
+                        month = datePicker.getMonth() + 1;
+                        year = datePicker.getYear();
+                        String date = year + "/" + month + "/" + day;
+                        r.setTitle(titleInput);
+                        r.setDescription(descriptionInput);
+                        r.setDate(date);
+//                        db = new TaskDBHelper(MainActivity.this);
+                        db = new ToDoItemDatabase(getApplicationContext(), TODO);
+//                        db = new ToDoItemDatabase(MainActivity.this, TODO);
+                        db.updateTask(r);
+                        db.close();
+                        Set_Referash_Data();
+                        dialog.dismiss();
+                    }
+                } catch (Exception ex) {
+                    System.out.println(ex.getStackTrace());
+                }
+            }
+        });
+        Button dialogButtonCancel = (Button) promtView.findViewById(R.id.buttonCancel);
+        // if button is clicked, close the custom dialog
+        dialogButtonCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "Task Cancelled", Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+            }
+        });
+        dialog.setView(promtView);
+        dialog.show();
     }
 
 }

@@ -13,34 +13,39 @@ import java.util.List;
 /**
  * Created by sneeli on 4/21/2015.
  */
-public class TaskDBHelper extends SQLiteOpenHelper{
+public class ToDoItemDatabase extends SQLiteOpenHelper{
 
     public static final String DB_NAME = "com.example.acadgild.sagar.todoproject.TASKS.db";
-    public static final String TABLE_NAME = "TODO_COMPLETED";
-    public static final String TASK_TITLE = "title";
+    public static String TABLE_NAME = "TODO";
+    public static String TASK_TITLE = "title";
     public static final String TASK_DESCRIPTION = "description";
     public static final String TASK_DATE = "date";
     public static final String _ID = "_id";
     public static final int DB_VERSION = 1;
 
-    private static String DB_CREATE_SCRIPT = "CREATE TABLE " + TABLE_NAME + " (" + _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            TASK_TITLE + " TEXT, " + TASK_DESCRIPTION + " TEXT, " + TASK_DATE + " TEXT);";
-    private static final String DB_DELETE_SCRIPT = "DROP TABLE IF EXISTS "+ TABLE_NAME;
+    private static String DB_CREATE_SCRIPT;
+    private static String DB_DELETE_SCRIPT;
     private final List<ToDoItem> todo = new ArrayList<ToDoItem>();
 
 
 
-    public TaskDBHelper(Context context) {
+    public ToDoItemDatabase(Context context, String table_name) {
         super(context, DB_NAME, null, DB_VERSION);
+        TABLE_NAME = table_name;
     }
+
+
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        DB_CREATE_SCRIPT = "CREATE TABLE " + TABLE_NAME + " (" + _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                TASK_TITLE + " TEXT, " + TASK_DESCRIPTION + " TEXT, " + TASK_DATE + " TEXT);";
         db.execSQL(DB_CREATE_SCRIPT);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        DB_DELETE_SCRIPT = "DROP TABLE IF EXISTS "+ TABLE_NAME;
         db.execSQL(DB_DELETE_SCRIPT);
         onCreate(db);
     }

@@ -1,0 +1,35 @@
+//                final Dialog dialog = new Dialog(MainActivity.this);
+//                dialog.setContentView(R.layout.custom_dialog);
+//                dialog.setTitle("Enter an activity");
+
+//                final EditText title = (EditText) dialog.findViewById(R.id.editTextTitle);
+//                final EditText description = (EditText) dialog.findViewById(R.id.editTextDescription);
+//                final DatePicker datePicker = (DatePicker) dialog.findViewById(R.id.datePicker);
+
+//                Button dialogButtonSave = (Button) dialog.findViewById(R.id.buttonSave);
+
+//                Button dialogButtonCancel = (Button) dialog.findViewById(R.id.buttonCancel);
+
+
+//        Intent i = new Intent("com.example.neeli.sagar.todoapp.DoneActivity");
+//        completedDb = new TaskDBHelper(getApplication());
+//        completedDb.insertIntoTable(m);
+//        Bundle b = new Bundle();
+//        //pass the country object as a parcel
+//        b.putParcelable("Items", m);
+//        intent.putExtra("Items",m);
+//        intent.putExtras(b);
+
+
+
+
+//        Bundle bundle = this.getIntent().getExtras();
+//        m = bundle.getParcelable("Items");
+
+//        Intent intent = getIntent();
+//        ToDoItem person = (ToDoItem) intent.getSerializableExtra("Items");
+
+
+
+//        completedDb.insertIntoTable(m);
+//        completedDb.insertIntoTable(person);
